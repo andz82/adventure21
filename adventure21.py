@@ -1,6 +1,34 @@
 #!/user/bin/python
 # vim: et sw=2 ts=2 sts=2
 #
+# Lower Floor:
+#
+# ---> NORTH
+#           -----------------------------
+#           | Maga's | Laura's | living |
+#           | room   | room    | room   |
+# --------------O---------O---------O----
+# | Kitchen O         Hallway           |
+# |         |                           |
+# -----------        ---------------O----
+#           | Stairs O Rest-   |   Exit
+#           |        | room    |
+#           -----O--------------
+#           | Bath-  |
+#           | room   |
+#           ----------
+#
+# Upper Floor:
+#
+# ---> NORTH
+# --------------------------------------
+# | Marco's O Stairs O Andz's  O Attic  |
+# | room    |        | room    |        |
+# -------O-------------------------------
+# | Closet  |
+# |         |
+# -----------
+
 
 from advent import *
 from advent import Game, Location, Connection, Object, Animal, Robot, Pet, Player
