@@ -513,16 +513,16 @@ class Game(Base):
         text = "<font color='orange'>" + text + '</font>'
       return text
 
-    # if (message_type == FEEDBACK):
-    #   text = Colors.FG.pink + text + Colors.reset
-    # if (message_type == TITLE):
-    #   text = Colors.FG.yellow + Colors.BG.blue + "\n" + text + Colors.reset
-    # if (message_type == DESCRIPTION):
-    #   text = Colors.reset + text
-    # if (message_type == CONTENTS):
-    #   text = Colors.FG.green + text + Colors.reset
-    # if (message_type == DEBUG):
-    #   text = Colors.bold + Colors.FG.black + Colors.BG.orange + "\n" + text + Colors.reset
+    if (message_type == FEEDBACK):
+      text = Colors.FG.pink + text + Colors.reset
+    if (message_type == TITLE):
+      text = Colors.bold + "\n" + text + Colors.reset
+    if (message_type == DESCRIPTION):
+      text = Colors.reset + text
+    if (message_type == CONTENTS):
+      text = Colors.FG.green + text + Colors.reset
+    if (message_type == DEBUG):
+      text = Colors.bold + Colors.FG.black + Colors.BG.orange + "\n" + text + Colors.reset
     return text
 
   # overload this for HTTP output

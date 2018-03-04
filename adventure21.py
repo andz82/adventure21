@@ -8,95 +8,139 @@ from advent import NORTH, SOUTH, EAST, WEST, UP, DOWN, RIGHT, LEFT, IN, OUT, FOR
 
 # Create the game
 
+print("                       ~~~ Welcome to ~~~                       ")
+print("    ___       __                 __                     ___  ___")
+print("   /   | ____/ /   _____  ____  / /___  __________     |__ \<  /")
+print("  / /| |/ __  / | / / _ \/ __ \/ __/ / / / ___/ _ \    __/ // / ")
+print(" / ___ / /_/ /| |/ /  __/ / / / /_/ /_/ / /  /  __/   / __// /  ")
+print("/_/  |_\__,_/ |___/\___/_/ /_/\__/\__,_/_/   \___/   /____/_/   ")
+print("                                                                ")
+print("                       ~~~~~~~~~~~~~~~~~~                       ")
+print("                                                                ")
+print("For a list of commands, just enter 'commands' or 'verbs'...     ")
+print("                                                                ")
+
 game = Game("Adventure 21")
+
 
 # Create all Rooms
 
-room_flur_nord = game.new_location(
-  "Flur Nord",
-  """Du befindest dich im Flur. Im Westen ist das Wohnzimmer, im Osten ist eine Tuer mit Zahlenschloss. 
-Der Flur erstreckt sich weiter gen Sueden.""")
+room_hallway_north = game.new_location(
+  "Hallway North",
+  """You find yourself in a hallway. In the west, you see the open door to the living room.
+In the east, you look at a door with a combination lock. 
+The hallway extends towards south.""")
 
-room_flur_mitte = game.new_location(
-  "Flur Mitte",
-"""Du befindest dich immer noch im Flur. Im Westen ist ein Raum mit verschlossener Tuer.
-Der Flur erstreckt sich nun gen Sueden und Norden.""")
+room_hallway_middle = game.new_location(
+  "Center Hallway",
+""" You still walk through the hallway. There is a closed door in the west.
+The hallway is open to south and north.""")
 
-room_flur_sued = game.new_location(
-  "Flur Sued",
-"""Du befindest dich am Suedende des Flurs. Im Westen ist eine offene Tuer. Im Sueden die Kueche. 
-Der Flur erstreckt sich nun gen Norden und Osten.""")
+room_hallway_south = game.new_location(
+  "Hallway South",
+"""You find yourself at the south end of the hallway. There is an open door towards west.
+The kitchen is placed in the south. 
+The hallway still extends towards east.""")
 
-room_flur_ost = game.new_location(
-  "Flur Ost",
-"""Du befindest dich am Ostfluegel des Flurs. Im Osten ist das Bad. Im Norden die Toilette.
-Du siehst eine Wendeltreppe welche nach oben fuehrt. 
-Im Westen geht es den weiten, weiten Weg zurueck.""")
+room_hallway_east = game.new_location(
+  "Hallway East",
+"""The east wing of the hallway looks higher than the rest. The bathroom is in the east.
+Towards north you can find the restroom.
+You see circular staris heading upwards. 
+Westbound you see all the far way back.""")
 
-room_wohnzimmer = game.new_location(
-  "Wohnzimmer",
-"""Im Wohnzimmer wird niemals gewohnt.""")
+room_living_room = game.new_location(
+  "Living Room",
+"""A living room where no one ever lived.""")
 
 room_laura = game.new_location(
-  "Laura's Zimmer",
-"""Du siehst ein Boxspringbett, sieht sehr gemuetlich aus.""")
+  "Laura's Room",
+"""You see a big, cozy bed.""")
 
 room_maga = game.new_location(
-  "Maga's Zimmer",
-"""Kunst, ueberall Kunst an den Waenden.""")
+  "Maga's Room",
+"""Art, everywhere is art on the walls.""")
 
-room_kueche = game.new_location(
-  "Kueche",
-"""Hier wird gekocht.""")
+room_kitchen = game.new_location(
+  "Kitchen",
+"""Cooking time.""")
 
-room_bad = game.new_location(
-  "Bad",
+room_bath = game.new_location(
+  "Bathroom",
 """Hmmm...""")
 
 room_klo = game.new_location(
-  "Toilette",
-"""Wenn man muss, dann muss man""")
+  "Restroom",
+"""Sometimes you need your time.""")
 
 room_oben = game.new_location(
-  "Wendeltreppe oben",
-"""Es gibt ein oben!?!?
-Du siehst eine Wand voller Skateboards vor dir.
-Im Norden und Sueden siehst du je eine offene Tuer.""")
+  "Circular staircase, upper level",
+"""There is an upstairs!?!?
+You see a wall full of skateboards in front of you.
+You can enter two rooms in the south and north""")
 
 room_marco = game.new_location(
-  "Marco's Zimmer",
-"""Du befindest dich in einem Antiquitaetenladen.""")
+  "Marco's Room",
+"""You find yourself inside an curiosity shop.
+There is an closet eastbound""")
+
+room_closet = game.new_location(
+  "Closet",
+""":-o""")
 
 room_andz = game.new_location(
-  "Andz's Zimmer",
-"""Chaos, ueberall Chaos.
-Du siehst eine verschlossene Tuer im Norden""")
+  "Andz's Room",
+"""Chaos, Chaos everywhere.
+There is a closed door in the north""")
 
-room_dachboden = game.new_location(
-  "Dachboden",
-"""Ein Dachboden!""")
+room_attic = game.new_location(
+  "Attic",
+"""An Attic!""")
 
 # connect the rooms
 
-game.new_connection("Flur", room_flur_nord, room_flur_mitte, SOUTH, NORTH)
-game.new_connection("Flur", room_flur_mitte, room_flur_sued, SOUTH, NORTH)
-game.new_connection("Flur", room_flur_sued, room_flur_ost, EAST, WEST)
+game.new_connection("hallway", room_hallway_north, room_hallway_middle, SOUTH, NORTH)
+game.new_connection("hallway", room_hallway_middle, room_hallway_south, SOUTH, NORTH)
+game.new_connection("hallway", room_hallway_south, room_hallway_east, EAST, WEST)
 
-game.new_connection("Tuer", room_flur_nord, room_wohnzimmer, WEST, EAST)
-game.new_connection("Tuer", room_flur_mitte, room_laura, WEST, EAST)
-game.new_connection("Tuer", room_flur_sued, room_maga, WEST, EAST)
-game.new_connection("Tuer", room_flur_sued, room_kueche, SOUTH, NORTH)
-game.new_connection("Tuer", room_flur_ost, room_bad, EAST, WEST)
-game.new_connection("Tuer", room_flur_ost, room_klo, NORTH, SOUTH)
+game.new_connection("door", room_hallway_north, room_living_room, WEST, EAST)
+game.new_connection("door", room_hallway_middle, room_laura, WEST, EAST)
+game.new_connection("door", room_hallway_south, room_maga, WEST, EAST)
+game.new_connection("door", room_hallway_south, room_kitchen, SOUTH, NORTH)
+game.new_connection("door", room_hallway_east, room_bath, EAST, WEST)
+game.new_connection("door", room_hallway_east, room_klo, NORTH, SOUTH)
 
-game.new_connection("Wendeltreppe", room_flur_ost, room_oben, UP, DOWN)
+game.new_connection("circular stairs", room_hallway_east, room_oben, UP, DOWN)
 
-game.new_connection("Tuer", room_oben, room_marco, SOUTH, NORTH)
-game.new_connection("Tuer", room_oben, room_andz, NORTH, SOUTH)
-game.new_connection("Tuer", room_andz, room_dachboden, NORTH, SOUTH)
+game.new_connection("door", room_oben, room_marco, SOUTH, NORTH)
+game.new_connection("door", room_marco, room_closet, EAST, WEST)
+game.new_connection("door", room_oben, room_andz, NORTH, SOUTH)
+game.new_connection("door", room_andz, room_attic, NORTH, SOUTH)
+
+# Create Objects
+
+skateboard = room_oben.new_object("skateboard", "Wanna ride?")
+
+def death_by_skateboard(self, actor, noun, words):
+  if actor == hero:
+    self.game.output("You are skating throgh '" + actor.location.name + "' but you can't skate. You broke your neck.")
+    hero.terminate()
+  else:
+    self.game.output(actor.name + " is skating through " + actor.location.name + ".")
+  return True
+
+skateboard.add_verb(Verb(death_by_skateboard, "skate"))
 
 # Now we are going to add our player at the starting location:
 
-player = game.new_player(room_flur_nord)
+hero = Player()
+hero.set_location(room_hallway_north)
+
+egon = Pet("Egon")
+egon.set_location(room_hallway_east)
+egon.add_verb(SayOnSelf("Egon shakes his leaves for joy.", "water"))
+
+game.add_actor(hero)
+game.add_actor(egon)
 
 game.run()
